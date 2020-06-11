@@ -11,6 +11,18 @@
   <link rel="stylesheet" href="/build/tailwind.css" />
 
   <title>Recipeboard</title>
+
+  <script>
+    function onChange(val) {
+      const el1 = document.getElementById('sub-selector');
+      const subs = el1.options[el1.selectedIndex].value;
+
+      const el2 = document.getElementById('price-selector');
+      const price = el2.options[el2.selectedIndex].value;
+
+      document.getElementById('earnings-total').innerHTML = `Total: $${parseInt(subs) * parseInt(price)} per month`;
+    }
+  </script>
 </head>
 
 <body class="antialiased">
@@ -291,24 +303,25 @@
       </p>
     </div>
     <div class="flex flex-col justify-around h-64 px-3 py-8 m-auto text-center bg-white rounded lg:w-1/2 calculator">
-      <select class="w-full m-auto list-none lg:w-4/5">
-        <option>50 subscribers</option>
-        <option>100 subscribers</option>
-        <option>200 subscribers</option>
-        <option>500 subscribers</option>
-        <option>1500 subscribers</option>
-        <option>5000 subscribers</option>
+      <select id='sub-selector' onChange="onChange(this)" class="w-full m-auto list-none lg:w-4/5">
+        <option value="50">50 subscribers</option>
+        <option value="100">100 subscribers</option>
+        <option value="200">200 subscribers</option>
+        <option value="500">500 subscribers</option>
+        <option value="1500">1500 subscribers</option>
+        <option value="5000">5000 subscribers</option>
       </select>
-      <select class="w-full m-auto lg:w-4/5">
-        <option>$3 p/m</option>
-        <option>$5 p/m</option>
-        <option>$8 p/m</option>
-        <option>$12 p/m</option>
-        <option>$20 p/m</option>
-        <option>$50 p/m</option>
+      <select id='price-selector' onChange="onChange(this)" class="w-full m-auto lg:w-4/5">
+        <option value="3">$3 p/m</option>
+        <option value="5">$5 p/m</option>
+        <option value="8">$8 p/m</option>
+        <option value="12">$12 p/m</option>
+        <option value="20">$20 p/m</option>
+        <option value="50">$50 p/m</option>
       </select>
 
-      <span class="block text-xl font-semibold tracking-tighter text-gray-900">Total: $750 per month</span>
+      <span id="earnings-total" class="block text-xl font-semibold tracking-tighter text-gray-900">Total: $150 per
+        month</span>
     </div>
   </div>
 </body>
